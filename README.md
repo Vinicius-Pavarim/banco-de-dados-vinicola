@@ -1,4 +1,4 @@
-# Banco de Dados – Sistema de Vinícolas
+# Banco de Dados – Modelo de Lanchonete e Sistema de Vinícolas
 
 Este repositório contém a modelagem de uma **lanchonete** e a implementação de um banco de dados relacional
 desenvolvido para o gerenciamento de **vinícolas, vinhos e regiões produtoras**.
