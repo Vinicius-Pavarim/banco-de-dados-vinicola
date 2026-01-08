@@ -62,7 +62,7 @@ O banco de dados é composto pelas seguintes entidades principais:
 
 ## Autor
 
-**Vinicius Pavarim**  
+**Vinicius Valentim Pavarim**  
 Estudante de Análise e Desenvolvimento de Sistemas (ADS)
 
 ---
