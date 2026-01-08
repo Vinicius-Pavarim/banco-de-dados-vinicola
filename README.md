@@ -1,6 +1,6 @@
 # Banco de Dados – Sistema de Vinícolas
 
-Este repositório contém a modelagem e a implementação de um banco de dados relacional
+Este repositório contém a modelagem de uma **lanchonete** e a implementação de um banco de dados relacional
 desenvolvido para o gerenciamento de **vinícolas, vinhos e regiões produtoras**.
 
 O projeto foi desenvolvido com fins acadêmicos, demonstrando conceitos
