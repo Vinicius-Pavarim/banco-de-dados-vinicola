@@ -1,0 +1,86 @@
+-- Esquema "Lanchonete"
+
+CREATE SCHEMA `Lanchonete` DEFAULT CHARACTER SET utf8 ;
+
+-- Tabela "Cardapio"
+
+CREATE TABLE Lanchonete.Cardapio (
+  CodCardapio INT PRIMARY KEY,
+  Nome VARCHAR(80) NOT NULL,
+  Preco DECIMAL NOT NULL
+);
+
+-- Tabela "Cliente"
+
+CREATE TABLE Lanchonete.Cliente (
+  CodCliente INT PRIMARY KEY,
+  Nome VARCHAR(80) NOT NULL,
+  Telefone CHAR(11) NOT NULL,
+  Endereco VARCHAR(80) NOT NULL
+);
+
+-- Tabela "Pedido"
+
+CREATE TABLE Lanchonete.Pedido (
+  Cod INT PRIMARY KEY,
+  Status INT NOT NULL,
+  Data TIMESTAMP NOT NULL,
+  CodEntregador INT,
+  CodCliente INT,
+  FOREIGN KEY (CodEntregador) REFERENCES Lanchonete.Entregador(CodEntregador),
+  FOREIGN KEY (CodCliente) REFERENCES Lanchonete.Cliente(CodCliente)
+);
+
+-- Tabela "Item"
+
+-- Tabela "Item"
+CREATE TABLE Lanchonete.Item (
+  CodPedido INT,
+  CodCardapio INT,
+  Quantidade TINYINT NOT NULL,
+  PRIMARY KEY (CodPedido, CodCardapio),
+  FOREIGN KEY (CodPedido) REFERENCES Lanchonete.Pedido(CodPedido),
+  FOREIGN KEY (CodCardapio) REFERENCES Lanchonete.Cardapio(CodCardapio)
+);
+
+-- Tabela "Entregador"
+
+CREATE TABLE Lanchonete.Entregador (
+  CodEntregador INT PRIMARY KEY,
+  Nome VARCHAR(80) NOT NULL,
+  Telefone CHAR(11) NOT NULL
+);
+
+-- Inserir um Cliente
+
+INSERT INTO Lanchonete.Cliente (CodCliente, Nome, Telefone, endereco)
+VALUES (1, 'Jon Snow', '40028922', 'Rua João Neves, 777');
+
+-- Inserir algo do Cardápio
+
+INSERT INTO Lanchonete.Cardapio (CodCardapio, Nome, Preco)
+VALUES (1, 'Sanduíche de Presunto', 10.99);
+
+-- Inserir um Pedido
+
+INSERT INTO Lanchonete.Pedido (CodPedido, Status, Data, CodCliente, CodEntregador)
+VALUES (1, 0, '2023-09-09', 1, 1);
+
+-- Inserir quantidade do Pedido
+
+INSERT INTO Lanchonete.Item (CodPedido, CodCardapio, Quantidade)
+VALUES (1, 1, 2);
+
+-- Inserir um Entregador
+
+INSERT INTO Lanchonete.Entregador (CodEntregador, Nome, Telefone)
+VALUES (1, 'Peter Parker', '22982004');
+
+-- Consulta
+
+SELECT Lanchonete.Pedido.CodPedido, Lanchonete.Cliente.Nome, Lanchonete.Pedido.Status
+FROM Lanchonete.Pedido
+JOIN Lanchonete.Cliente ON Lanchonete.Pedido.CodCliente = Lanchonete.Cliente.CodCliente
+WHERE Lanchonete.Pedido.Status = 0;
+
+
